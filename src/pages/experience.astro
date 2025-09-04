@@ -1,0 +1,52 @@
+---
+import { WORK } from '../lib/constants'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TopLayout from '../layouts/TopLayout.astro'
+import BottomLayout from '../layouts/BottomLayout.astro'
+
+import { EXPERIENCE } from '../lib/constants'
+---
+
+<BaseLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
+  <main class="flex flex-auto flex-col" transition:animate="fade">
+    <TopLayout>
+      <!-- <h2
+        class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
+      >
+        {WORK.TITLE}
+      </h2> -->
+      <h2 class="pb-4 text-3xl font-semibold">
+        {WORK.TITLE}
+      </h2>
+      <h6 class="scroll-m-20 border-b tracking-tight first:mt-0">
+        {WORK.DESCRIPTION}
+      </h6>
+    </TopLayout>
+    <BottomLayout>
+      <ul>
+        {
+          EXPERIENCE.map((entry) => (
+            <li class="animate mt-4 border-b border-black/10 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none dark:border-white/25">
+              <div class="mb-4 text-sm uppercase">
+                {entry.start} - {entry.end}
+              </div>
+              <h3 class={`font-semibold text-primary`}>{entry.company}</h3>
+              <div class="text-sm font-semibold">{entry.position}</div>
+              {entry.tasks.map((i) => {
+                if (entry.tasks.length > 1) {
+                  return (
+                    <ul class="prose dark:prose-invert list-outside list-disc space-y-2 pl-6">
+                      <li>{i}</li>
+                    </ul>
+                  )
+                }
+
+                return <p>{i}</p>
+              })}
+            </li>
+          ))
+        }
+      </ul>
+    </BottomLayout>
+  </main>
+</BaseLayout>

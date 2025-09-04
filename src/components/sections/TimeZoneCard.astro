@@ -1,0 +1,16 @@
+---
+import { STUDIES } from '../../lib/constants'
+import { Badge } from '../ui/badge'
+// import TimeZoneV2 from './TimeZoneCardV2'
+---
+
+<>
+  {
+      STUDIES.map((study) => (
+        <a href={study.link} target="__blank">
+          <Badge variant="outline">{study.institution}</Badge>
+        </a>
+      ))
+    }
+  <!-- <TimeZoneV2 timezone="America/Bogota" client:load /> -->
+</>
