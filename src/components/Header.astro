@@ -1,11 +1,7 @@
 ---
-import { Github, Mail, Linkedin, Phone } from 'lucide-react'
-import { buttonVariants } from '../components/ui/button'
 import { ModeToggle } from '../components/ui/ThemeToggle'
-import { LINKS } from '../lib/constants'
-
-const buttonClass = buttonVariants({ variant: 'ghost' })
-const cv = '/cv.pdf'
+import Contact from './sections/Contact.astro'
+import {Contact as ContactIcon} from "lucide-react"
 ---
 
 <script is:inline>
@@ -22,6 +18,69 @@ const cv = '/cv.pdf'
   document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
 </script>
 
+<!-- <style>
+  .dropdown-details {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-details summary {
+    background-color: #9b59b6;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 16px;
+  }
+
+  .dropdown-details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .dropdown-details summary:hover {
+    background-color: #8e44ad;
+  }
+
+  .dropdown-details .dropdown-list {
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+  }
+
+  .dropdown-details .dropdown-list a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+  }
+
+  .dropdown-details .dropdown-list a:hover {
+    background-color: #f1f1f1;
+  }
+
+  .dropdown-list {
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+  }
+</style> -->
+
 <header
   class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
 >
@@ -34,48 +93,12 @@ const cv = '/cv.pdf'
       </a>
     </div>
     <nav class="flex flex-1 items-center items-center justify-end space-x-4">
-      <div class="hidden md:block">
-        <a
-          href={cv}
-          target="_blank"
-          rel="noreferrer"
-          class="text-sm underline-offset-4 hover:underline"
-        >
-          Resume
-        </a>
-        <a
-          href={LINKS.tel}
-          target="_blank"
-          rel="noreferrer"
-          class={buttonClass}
-        >
-          <Phone size={15} />
-        </a>
-        <a
-          href={LINKS.github}
-          target="_blank"
-          rel="noreferrer"
-          class={buttonClass}
-        >
-          <Github size={15} />
-        </a>
-        <a
-          href={LINKS.email}
-          target="_blank"
-          rel="noreferrer"
-          class={buttonClass}
-        >
-          <Mail size={15} />
-        </a>
-        <a
-          href={LINKS.linkedin}
-          target="_blank"
-          rel="noreferrer"
-          class={buttonClass}
-        >
-          <Linkedin size={15} />
-        </a>
-      </div>
+      <details class="relative md:hidden">
+        <summary><ContactIcon /></summary>
+        <Contact styling='absolute flex flex-col'/>
+      </details>
+
+      <Contact styling="hidden md:block" />
 
       <ModeToggle transition:persist client:load />
     </nav>

@@ -81,7 +81,7 @@ export const Terminal = () => {
       description: 'Navigate to tech page',
       action: () => {
         setTimeout(() => {
-          window.location.href = '/techs'
+          window.location.href = '/tech'
         }, 500)
         return ['Navigating to tech page...']
       },
@@ -98,7 +98,7 @@ export const Terminal = () => {
         'Available pages:',
         '  projects/',
         '  experience/',
-        '  techs/',
+        '  tech/',
         '',
       ],
     },

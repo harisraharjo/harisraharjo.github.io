@@ -1,0 +1,199 @@
+---
+// import Layout from '../../layouts/Layout.astro'
+import { undefined } from 'astro:schema'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export function getStaticPaths() {
+  return [
+    { params: { category: undefined } }, // /techs
+    // { params: { category: 'frontend' } }, // /techs/frontend
+    // { params: { category: 'backend' } }, // /techs/backend
+    { params: { category: 'web' } }, // /techs/web
+    { params: { category: 'lang' } }, // /techs/lang
+    { params: { category: 'cross' } }, // /techs/cross
+    // { params: { category: 'systems' } }, // /techs/systems
+    { params: { category: 'database' } }, // /techs/databases
+    { params: { category: 'others' } }, // /techs/others
+    { params: { category: 'cloud' } }, // /techs/cloud
+  ]
+}
+
+const { category } = Astro.params
+
+// const categoryTitles = {
+//   all: 'Tech Skills',
+//   frontend: 'Frontend Skills',
+//   backend: 'Backend Skills',
+//   // systems: 'Systems Skills',
+//   others: 'Others',
+//   cloud: 'Cloud Skills',
+//   cross: 'Cross Platform Skills',
+//   lang: 'Programming Languages',
+//   databases: 'Databases',
+// }
+
+const techs = {
+  lang: {
+    title: 'Programming Languages',
+    icon: '💻',
+    path: '/lang',
+    skills: [
+      { name: 'Python' },
+      { name: 'Rust' },
+      { name: 'JavaScript' },
+      { name: 'TypeScript' },
+      { name: 'PHP' },
+    ],
+  },
+  web: {
+    title: 'Web Development',
+    path: '/web',
+    icon: '🌐',
+    skills: [
+      { name: 'React JS', category: 'frontend' },
+      { name: 'Next.js', category: 'frontend' },
+      { name: 'Vue', category: 'frontend' },
+      { name: 'Node.js', category: 'backend' },
+      { name: 'Laravel', category: 'backend' },
+      { name: 'Django', category: 'backend' },
+      { name: 'Flask', category: 'backend' },
+    ],
+  },
+  cross: {
+    title: 'Cross Platform',
+    icon: '🚀',
+    path: '/cross',
+    skills: [{ name: 'Tauri' }],
+  },
+  database: {
+    title: 'Databases',
+    path: '/database',
+    icon: '🗄️',
+    skills: [
+      { name: 'MySQL' },
+      { name: 'PostgreSQL' },
+      { name: 'SQLite' },
+      { name: 'Firestore' },
+      { name: 'Redis' },
+    ],
+  },
+  cloud: {
+    title: 'Clouds',
+    path: '/cloud',
+    icon: '☁️',
+    skills: [{ name: 'AWS' }],
+  },
+  others: {
+    title: 'Others',
+    path: '/others',
+    icon: '🔧',
+    skills: [{ name: 'Docker' }],
+  },
+}
+
+
+
+---
+
+<BaseLayout
+  title="Tech"
+  description="Portfolio, Projects, CV, About Me, Contact"
+>
+  <div>
+    <!-- Current Category: {category} -->
+    {/* Header */}
+    <div class="mb-12 text-center">
+      <h2 class="mb-4 text-4xl font-bold text-gray-800 dark:text-white">
+        <!-- {getCategoryTitle()} -->
+
+        <!-- `${category.icon} ${category.name}` -->
+        {category || 'All'}
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300">
+        {
+          category
+            ? `My ${category} technology stack`
+            : 'Technologies and tools I work with'
+        }
+      </p>
+    </div>
+    {/* Category Navigation */}
+    <div class="mb-8 flex flex-wrap justify-center gap-3">
+      <a
+        href={`/tech`}
+            class={`inline-block rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+              category === "/tech"
+                ? 'scale-105 transform bg-blue-500 text-white shadow-lg'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+            }`}
+            >
+            <span class="mr-2">🎯</span>
+            All
+        <!-- {
+          all: { path: '', title: 'All', icon: '🎯' },
+        } -->
+      </a>
+      {
+        Object.values(techs).map((tech) => (
+          <a
+            key={tech.path}
+            href={`/tech${tech.path}`}
+            class={`inline-block rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+              category === tech.path
+                ? 'scale-105 transform bg-blue-500 text-white shadow-lg'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+            }`}
+          >
+            <span class="mr-2">{tech.icon}</span>
+            {tech.title}
+          </a>
+        ))
+      }
+    </div>
+
+    {
+      category == undefined && (
+        <div class="space-y-8">
+          {Object.entries(techs).map(([key, section]) => (
+            <div
+              key={key}
+              class="rounded-xl bg-white p-6 shadow-lg dark:bg-gray-800"
+            >
+              {/* Head */}
+              <div class="mb-6 flex items-center">
+                <span class="mr-3 text-3xl">{section.icon}</span>
+                <h4 class="text-xl font-bold text-gray-800 dark:text-white">
+                  {section.title}
+                </h4>
+              </div>
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {section.skills.map((skill, index) => (
+                  <div
+                    key={index}
+                    class="flex items-center justify-between rounded-lg bg-gray-50 p-3 dark:bg-gray-700"
+                  >
+                    <span class="font-medium text-gray-800 dark:text-white">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        techs[category?.toString()]?.skills.map((skill) => (
+          <div class="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
+            <div class="mb-3 flex items-center justify-between">
+              <h3 class="text-lg font-semibold">{skill.name}</h3>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
