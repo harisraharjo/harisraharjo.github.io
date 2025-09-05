@@ -2,6 +2,17 @@
 // import Layout from '../../layouts/Layout.astro'
 import { undefined } from 'astro:schema'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import Tab from '../../components/sections/tech/Tab.astro'
+
+type Category =
+  | 'all'
+  | 'web'
+  | 'lang'
+  | 'cross'
+  | 'database'
+  | 'others'
+  | 'cloud'
+// : {params: {category: Category}}[]
 
 export function getStaticPaths() {
   return [
@@ -36,7 +47,7 @@ const techs = {
   lang: {
     title: 'Programming Languages',
     icon: '💻',
-    path: '/lang',
+    path: 'lang',
     skills: [
       { name: 'Python' },
       { name: 'Rust' },
@@ -47,7 +58,7 @@ const techs = {
   },
   web: {
     title: 'Web Development',
-    path: '/web',
+    path: 'web',
     icon: '🌐',
     skills: [
       { name: 'React JS', category: 'frontend' },
@@ -62,12 +73,12 @@ const techs = {
   cross: {
     title: 'Cross Platform',
     icon: '🚀',
-    path: '/cross',
+    path: 'cross',
     skills: [{ name: 'Tauri' }],
   },
   database: {
     title: 'Databases',
-    path: '/database',
+    path: 'database',
     icon: '🗄️',
     skills: [
       { name: 'MySQL' },
@@ -79,20 +90,17 @@ const techs = {
   },
   cloud: {
     title: 'Clouds',
-    path: '/cloud',
+    path: 'cloud',
     icon: '☁️',
     skills: [{ name: 'AWS' }],
   },
   others: {
     title: 'Others',
-    path: '/others',
+    path: 'others',
     icon: '🔧',
     skills: [{ name: 'Docker' }],
   },
 }
-
-
-
 ---
 
 <BaseLayout
@@ -117,37 +125,19 @@ const techs = {
         }
       </p>
     </div>
+    
     {/* Category Navigation */}
     <div class="mb-8 flex flex-wrap justify-center gap-3">
-      <a
-        href={`/tech`}
-            class={`inline-block rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
-              category === "/tech"
-                ? 'scale-105 transform bg-blue-500 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-            }`}
-            >
-            <span class="mr-2">🎯</span>
-            All
-        <!-- {
-          all: { path: '', title: 'All', icon: '🎯' },
-        } -->
-      </a>
+      <Tab icon="🎯" path="/tech" title="All" isActive={Boolean(category)} />
       {
-        Object.values(techs).map((tech) => (
-          <a
-            key={tech.path}
-            href={`/tech${tech.path}`}
-            class={`inline-block rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
-              category === tech.path
-                ? 'scale-105 transform bg-blue-500 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-            }`}
-          >
-            <span class="mr-2">{tech.icon}</span>
-            {tech.title}
-          </a>
-        ))
+        Object.values(techs).map((tech) =>
+          (<Tab
+            icon={tech.icon}
+            path={`/tech/${tech.path}`}
+            title={tech.title}
+            isActive={Boolean(category !== tech.path)}
+          />)
+        )
       }
     </div>
 
