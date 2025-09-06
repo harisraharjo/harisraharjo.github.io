@@ -3,6 +3,7 @@
 import { undefined } from 'astro:schema'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Tab from '../../components/sections/tech/Tab.astro'
+import Card from '../../components/Card.astro'
 
 type Category =
   | 'all'
@@ -107,48 +108,28 @@ const techs = {
   title="Tech"
   description="Portfolio, Projects, CV, About Me, Contact"
 >
-  <div>
-    <!-- Current Category: {category} -->
-    {/* Header */}
-    <div class="mb-12 text-center">
-      <h2 class="mb-4 text-4xl font-bold text-gray-800 dark:text-white">
-        <!-- {getCategoryTitle()} -->
-
-        <!-- `${category.icon} ${category.name}` -->
-        {category || 'All'}
-      </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
-        {
-          category
-            ? `My ${category} technology stack`
-            : 'Technologies and tools I work with'
-        }
-      </p>
-    </div>
-    
+  <main class="md:p8 max-h-full min-h-96 p-4">
     {/* Category Navigation */}
     <div class="mb-8 flex flex-wrap justify-center gap-3">
       <Tab icon="🎯" path="/tech" title="All" isActive={Boolean(category)} />
       {
-        Object.values(techs).map((tech) =>
-          (<Tab
+        Object.values(techs).map((tech) => (
+          <Tab
             icon={tech.icon}
             path={`/tech/${tech.path}`}
             title={tech.title}
             isActive={Boolean(category !== tech.path)}
-          />)
-        )
+          />
+        ))
       }
     </div>
-
+    
+    <section class="grid gap-6 md:grid-cols-3">
     {
-      category == undefined && (
-        <div class="space-y-8">
+      category === undefined && (
+        <>
           {Object.entries(techs).map(([key, section]) => (
-            <div
-              key={key}
-              class="rounded-xl bg-white p-6 shadow-lg dark:bg-gray-800"
-            >
+            <div class="rounded-xl bg-white p-6 shadow-lg dark:bg-gray-800">
               {/* Head */}
               <div class="mb-6 flex items-center">
                 <span class="mr-3 text-3xl">{section.icon}</span>
@@ -158,10 +139,7 @@ const techs = {
               </div>
               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {section.skills.map((skill, index) => (
-                  <div
-                    key={index}
-                    class="flex items-center justify-between rounded-lg bg-gray-50 p-3 dark:bg-gray-700"
-                  >
+                  <div class="flex items-center justify-between rounded-lg bg-gray-50 p-3 dark:bg-gray-700">
                     <span class="font-medium text-gray-800 dark:text-white">
                       {skill.name}
                     </span>
@@ -170,20 +148,23 @@ const techs = {
               </div>
             </div>
           ))}
-        </div>
+        </>
       )
     }
-
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {
-        techs[category?.toString()]?.skills.map((skill) => (
-          <div class="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
-            <div class="mb-3 flex items-center justify-between">
-              <h3 class="text-lg font-semibold">{skill.name}</h3>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+    {
+      category !== undefined && techs[category.toString()]?.skills.map((skill) => (
+        <>
+          <Card colSpan="md:col-span-0" rowSpan="md:row-span-0">
+            {skill.name}
+          </Card>
+          {/* <div class="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
+              <div class="mb-3 flex items-center justify-between">
+                <h3 class="text-lg font-semibold">{skill.name}</h3>
+              </div>
+            </div> */}
+        </>
+      ))
+    }
+    </section>
+  </main>
 </BaseLayout>
