@@ -1,25 +1,17 @@
 ---
-import { Button } from '../ui/button'
 import { EXPERIENCE } from '../../lib/constants'
 ---
 
-<>
-  <div class="mt-2 space-y-4">
-    {
-      EXPERIENCE.slice(0, 3).map((exp) => (
-        <div>
-          <h3 class="text-lg font-semibold">{exp.position}</h3>
-          <p class="text-sm text-primary">
-            {exp.company}
-          </p>
-          <p class="text-sm text-gray-600">
-            {exp.start} - {exp.end}
-          </p>
-        </div>
-      ))
-    }
-    <a href="/experience">
-      <Button variant="link" className="pl-0"> View More </Button>
-    </a>
-  </div>
-</>
+<div class="mt-2 space-y-4">
+  {
+    EXPERIENCE.slice(0, 3).map((exp) => (
+      <div>
+        <h3 class="text-lg font-semibold">{exp.position}</h3>
+        <p class="text-primary text-sm">{exp.company}</p>
+        <p class="text-sm text-gray-600">
+          {exp.start} - {exp.end}
+        </p>
+      </div>
+    ))
+  }
+</div>

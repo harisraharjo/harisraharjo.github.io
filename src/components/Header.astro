@@ -1,7 +1,7 @@
 ---
 import { ModeToggle } from '../components/ui/ThemeToggle'
 import Contact from './sections/Contact.astro'
-import {Contact as ContactIcon} from "lucide-react"
+import { Contact as ContactIcon } from 'lucide-react'
 ---
 
 <script is:inline>
@@ -18,89 +18,21 @@ import {Contact as ContactIcon} from "lucide-react"
   document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
 </script>
 
-<!-- <style>
-  .dropdown-details {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropdown-details summary {
-    background-color: #9b59b6;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    list-style: none;
-    font-size: 16px;
-  }
-
-  .dropdown-details summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .dropdown-details summary:hover {
-    background-color: #8e44ad;
-  }
-
-  .dropdown-details .dropdown-list {
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 4px;
-    overflow: hidden;
-    top: 100%;
-    left: 0;
-    margin-top: 4px;
-  }
-
-  .dropdown-details .dropdown-list a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s;
-  }
-
-  .dropdown-details .dropdown-list a:hover {
-    background-color: #f1f1f1;
-  }
-
-  .dropdown-list {
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 4px;
-    overflow: hidden;
-    top: 100%;
-    left: 0;
-    margin-top: 4px;
-  }
-</style> -->
-
 <header
-  class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+  class="dark:border-none dark:bg-inherit text-card-foreground bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 m-0 flex h-16 w-full items-center space-x-4 border-b p-8 backdrop-blur sm:justify-between sm:space-x-0"
 >
-  <div
-    class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0"
-  >
-    <div class="flex gap-6 md:gap-10">
-      <a href="/" class="flex items-center space-x-2">
-        <span class="inline-block font-bold">/</span>
-      </a>
-    </div>
-    <nav class="flex flex-1 items-center items-center justify-end space-x-4">
-      <details class="relative md:hidden">
-        <summary><ContactIcon /></summary>
-        <Contact styling='absolute flex flex-col'/>
-      </details>
-
-      <Contact styling="hidden md:block" />
-
-      <ModeToggle transition:persist client:load />
-    </nav>
+  <div class="flex gap-6 md:gap-10">
+    <a href="/" class="flex items-center space-x-2">
+      <span class="inline-block font-bold">/</span>
+    </a>
   </div>
+  <nav class="flex flex-1 items-center justify-end space-x-4">
+    <details class="relative md:hidden">
+      <summary class="list-none cursor-pointer "><ContactIcon /></summary>
+      <Contact styling="absolute flex flex-col bg-card" />
+    </details>
+    <Contact styling="hidden md:block" />
+
+    <ModeToggle transition:persist client:load />
+  </nav>
 </header>

@@ -7,31 +7,51 @@ const buttonClass = buttonVariants({ variant: 'ghost' })
 const cv = '/cv.pdf'
 
 interface Props {
-  styling?: string
+  styling?: astroHTML.JSX.HTMLAttributes['class']
 }
 
 const { styling } = Astro.props
 ---
 
-<div class={styling}>
+<div class={`${styling}`}>
   <a
     href={cv}
     target="_blank"
     rel="noreferrer"
-    class="text-sm underline-offset-4 hover:underline"
+    class="dark:hover:decoration-accent py-1 text-sm underline-offset-4 hover:underline"
   >
     Resume
   </a>
-  <a href={LINKS.tel} target="_blank" rel="noreferrer" class={buttonClass}>
+  <a
+    href={LINKS.tel}
+    target="_blank"
+    rel="noreferrer"
+    class={`${buttonClass} dark:hover:text-accent dark:hover:bg-card`}
+  >
     <Phone size={15} />
   </a>
-  <a href={LINKS.github} target="_blank" rel="noreferrer" class={buttonClass}>
+  <a
+    href={LINKS.github}
+    target="_blank"
+    rel="noreferrer"
+    class={`${buttonClass} dark:hover:text-accent dark:hover:bg-card`}
+  >
     <Github size={15} />
   </a>
-  <a href={LINKS.email} target="_blank" rel="noreferrer" class={buttonClass}>
+  <a
+    href={LINKS.email}
+    target="_blank"
+    rel="noreferrer"
+    class={`${buttonClass} dark:hover:text-accent dark:hover:bg-card`}
+  >
     <Mail size={15} />
   </a>
-  <a href={LINKS.linkedin} target="_blank" rel="noreferrer" class={buttonClass}>
+  <a
+    href={LINKS.linkedin}
+    target="_blank"
+    rel="noreferrer"
+    class={`${buttonClass} dark:hover:text-accent dark:hover:bg-card`}
+  >
     <Linkedin size={15} />
   </a>
 </div>

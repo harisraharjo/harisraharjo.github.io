@@ -179,7 +179,8 @@ export const Terminal = () => {
 
   return (
     <div className="relative h-full w-full overflow-hidden rounded-lg border border-gray-600 bg-black font-mono text-sm text-green-400">
-      <div className="fixed flex w-full items-center rounded-t-lg bg-gray-800 px-4 py-2">
+      {/* top bar */}
+      <div className="sticky flex w-full items-center rounded-t-lg bg-gray-800 px-4 py-2">
         <div className="flex space-x-2">
           <div className="h-3 w-3 rounded-full bg-red-500"></div>
           <div className="h-3 w-3 rounded-full bg-yellow-500"></div>

@@ -1,36 +1,28 @@
 ---
 import { WORK } from '../lib/constants'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import TopLayout from '../layouts/TopLayout.astro'
-import BottomLayout from '../layouts/BottomLayout.astro'
+// import TopLayout from '../layouts/TopLayout.astro'
+// import BottomLayout from '../layouts/BottomLayout.astro'
 
 import { EXPERIENCE } from '../lib/constants'
+import Card from '../components/Card.astro'
+import Container from '../components/Container.astro'
 ---
 
 <BaseLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
   <main class="flex flex-auto flex-col" transition:animate="fade">
-    <TopLayout>
-      <!-- <h2
-        class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
-      >
-        {WORK.TITLE}
-      </h2> -->
-      <h2 class="pb-4 text-3xl font-semibold">
-        {WORK.TITLE}
-      </h2>
-      <h6 class="scroll-m-20 border-b tracking-tight first:mt-0">
-        {WORK.DESCRIPTION}
-      </h6>
-    </TopLayout>
-    <BottomLayout>
-      <ul>
-        {
-          EXPERIENCE.map((entry) => (
-            <li class="animate mt-4 border-b border-black/10 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none dark:border-white/25">
+    <h2 class="dark:text-primary py-4 pl-6 text-3xl font-semibold">
+      {WORK.TITLE}
+    </h2>
+    <Container styling="py-5 flex flex-col gap-4">
+      {
+        EXPERIENCE.map((entry) => (
+          <Card styling="flex flex-col gap-4">
+            <div slot={'content'}>
               <div class="mb-4 text-sm uppercase">
                 {entry.start} - {entry.end}
               </div>
-              <h3 class={`font-semibold text-primary`}>{entry.company}</h3>
+              <h3 class={`text-primary font-semibold`}>{entry.company}</h3>
               <div class="text-sm font-semibold">{entry.position}</div>
               {entry.tasks.map((i) => {
                 if (entry.tasks.length > 1) {
@@ -43,10 +35,17 @@ import { EXPERIENCE } from '../lib/constants'
 
                 return <p>{i}</p>
               })}
-            </li>
-          ))
-        }
-      </ul>
-    </BottomLayout>
+            </div>
+            <div slot="footer" class="flex flex-wrap gap-1">
+              {entry.tools.map((tool) => (
+                <Card styling="px-4 py-2 bg-orange-500/20 backdrop-blur-md border border-orange-400/30 text-orange-200 rounded-full text-sm text-center">
+                  <p slot="content">{tool}</p>
+                </Card>
+              ))}
+            </div>
+          </Card>
+        ))
+      }
+    </Container>
   </main>
 </BaseLayout>

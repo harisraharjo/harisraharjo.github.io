@@ -1,41 +1,36 @@
 ---
-import ContentCard from './ContentCard.astro'
 import { Card as ShadcnCard } from './ui/card'
-import { SquareArrowOutUpRight } from 'lucide-react'
 
 interface Props {
   title?: string
-  body?: string
   colSpan?: string
   rowSpan?: string
   href?: string
-  colorText?: string
+  styling?: string
   padding?: number
   gap?: number
 }
 
-const { title, body, colSpan, rowSpan, href, colorText, padding=6, gap=0 } = Astro.props
+const {
+  title,
+  colSpan,
+  rowSpan,
+  href,
+  styling,
+  padding = 6,
+  gap = 0,
+} = Astro.props
 ---
 
 <ShadcnCard
-  className={`gap-${gap} card-animate transform-y-[-40%] align-start perspective-1200 group relative col-span-1 h-auto flex-none transform justify-start overflow-hidden p-${padding} shadow-lg transition duration-75 ease-in-out ${colSpan} 
-  ${rowSpan} ${href ? 'cursor-pointer hover:border-primary' : ''}`}
+  className={`border-zinc-700/40 bg-zinc-900/30 backdrop-blur-sm gap-${gap} card-animate transform-y-[-40%] align-start perspective-1200 group relative col-span-1 h-auto flex-none transform justify-start overflow-hidden p-${padding} shadow-lg transition duration-75 ease-in-out ${colSpan} ${rowSpan} ${href ? 'hover:border-primary cursor-pointer' : ''} ${styling}`}
 >
-  {
-    href ? (
-      <a href={href} class={`block h-full w-full ${colorText || ' '}`}>
-        <SquareArrowOutUpRight
-          className="group-hover:text-primary position absolute right-6 "
-          size={20}
-        />
-        <ContentCard title={title} body={body}>
-          <slot />
-        </ContentCard>
-      </a>
-    ) : (
-      <ContentCard title={title} body={body}>
-        <slot />
-      </ContentCard>
-    )
-  }
+  <>
+    <div class="flex">
+      {title && <h2 class="m-0 text-xl font-bold">{title}</h2>}
+      <slot name="header" />
+    </div>
+    <slot name="content" />
+    <slot name="footer" />
+  </>
 </ShadcnCard>

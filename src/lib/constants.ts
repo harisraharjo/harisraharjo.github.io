@@ -26,7 +26,7 @@ export const TECH: Page = {
 
 // Work Page
 export const WORK: Page = {
-  TITLE: 'Experience',
+  TITLE: '/experience',
   DESCRIPTION: 'Places I have worked.',
 }
 
@@ -137,7 +137,7 @@ export const techs = {
   {
     name: "Clouds",
     members: [
-      'Amazon Web Services'
+      'AWS'
     ]
 
   },
@@ -167,6 +167,9 @@ export const EXPERIENCE = [
       'Identified, fixed the database which then results in a better clustering and an increase query performance and better database paging',
       'Built a couple desktop applications with a low memory footprint to fit in user hardware specification for monitoring and automation',
       'Maintain & develop a backend with real time system capability'
+    ],
+    tools: [
+      "Python", "Rust", "HomeAssistant", "Javascript", "HTML", "CSS", "MySql", "AWS"
     ]
   },
   {
@@ -178,6 +181,9 @@ export const EXPERIENCE = [
     end: '2019',
     tasks: [
       'Developed REST API in Laravel for warehouses management system'
+    ],
+    tools: [
+      "Laravel", "PHP"
     ]
   },
   {
@@ -189,6 +195,9 @@ export const EXPERIENCE = [
     end: '2019',
     tasks: [
       'Develop an android application for doctor appointment using a NoSQL document based as the database'
+    ],
+    tools: [
+      "Android", "Kotlin", "Firestore"
     ]
   }
 ];
