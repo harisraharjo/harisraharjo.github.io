@@ -13,13 +13,13 @@ interface Props {
 const { title, description, ogImage } = Astro.props
 ---
 
-<html lang="en" class="scroll-pt-[100vh]">
+<html lang="en" class="lg:scroll-pt-[100vh]">
   <head>
     <HeadSEO title={title} description={description} ogImage={ogImage} />
     <ViewTransitions />
   </head>
   <body
-    class="min-h-screen dark:bg-gradient-to-r to-zinc-950 via-rose-950 from-black font-sans antialiased"
+    class="min-h-screen from-black via-rose-950 to-zinc-950 font-sans antialiased dark:bg-gradient-to-r"
   >
     <div class="flex flex-col items-center justify-center">
       <Header />

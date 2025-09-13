@@ -1,40 +1,16 @@
 ---
-// interface Props {
-//     sections: string[]
-// }
 
-// const {sections} = Astro.props
+export interface Props {
+  data: {
+    id: string
+  }[]
+}
+
+const { data } = Astro.props
 ---
 
-<script is:inline>
-  let current = 0
-  let f = sections;
-  const CAT = ['pl', 'web', 'back']
-  const idxs = CAT.length - 1
-
-  const focus = (id) => {
-    const target = document.getElementById(CAT.at(id))
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-    }
-  }
-
-  function nextSection() {
-    let prev = current
-    current = Math.min(current + 1, idxs)
-    if (prev !== current) focus(current)
-  }
-
-  function prevSection() {
-    let prev = current
-    current = Math.max(current - 1, 0)
-    if (prev !== current) focus(current)
-  }
-</script>
-
-<>
+<carousel-nav data-navData={JSON.stringify(data)}>
   <a
-    onclick="prevSection()"
     class="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-x-2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-950/80 text-white transition-all hover:bg-red-900/80"
   >
     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,7 +23,6 @@
   </a>
 
   <a
-    onclick="nextSection()"
     class="absolute top-1/2 right-0 z-10 flex h-10 w-10 translate-x-2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-950/80 text-white transition-all hover:bg-red-900/80"
   >
     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,4 +33,48 @@
         d="M9 5l7 7-7 7"></path>
     </svg>
   </a>
-</>
+</carousel-nav>
+
+<script>
+  class CarouselNav extends HTMLElement {
+    _data: any[]
+    _dataCount: number = 0
+    current = 0
+    constructor() {
+      super()
+      this._data = JSON.parse(this.dataset.navdata!)
+      this._dataCount = this._data!.length
+    }
+
+    focus(id) {
+      const target = document.getElementById(id)
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      }
+    }
+
+    nextSection() {
+      let prev = this.current
+      this.current = Math.min(this.current + 1, this._dataCount)
+      let elementId = this._data.at(this.current)?.id
+      if (prev !== this.current && elementId) this.focus(elementId)
+    }
+
+    prevSection() {
+      let prev = this.current
+      this.current = Math.max(this.current - 1, 0)
+      let elementId = this._data.at(this.current)?.id
+      if (prev !== this.current && elementId) this.focus(elementId)
+    }
+
+    connectedCallback() {
+      const prevArrow = this.children[0]
+      prevArrow!.addEventListener('click', () => this.prevSection())
+
+      const nextArrow = this.children[1]
+      nextArrow!.addEventListener('click', () => this.nextSection())
+    }
+  }
+
+  customElements.define('carousel-nav', CarouselNav)
+</script>
