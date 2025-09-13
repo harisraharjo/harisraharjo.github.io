@@ -1,0 +1,255 @@
+---
+import Nav from "./nav.astro"
+
+const CAT = ['pl', 'web', 'back']
+---
+
+<div
+  class="flex max-h-96 w-full snap-x snap-mandatory gap-8 overflow-y-auto scroll-smooth"
+>
+  <!-- Navigation arrows -->
+  <Nav />
+
+  <!-- Frontend Section -->
+  <div id={CAT[0]} class="w-full shrink-0 snap-center px-4">
+    <h3 class="mb-4 text-center text-xl font-bold text-red-300">
+      Programming Languages
+    </h3>
+    <div class="grid w-full grid-cols-2 gap-4">
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-cyan-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-600 text-sm font-bold text-white"
+        >
+          RT
+        </div>
+        <span class="text-center text-xs font-semibold">React</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-purple-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-600 text-sm font-bold text-white"
+        >
+          VU
+        </div>
+        <span class="text-center text-xs font-semibold">Vue.js</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-orange-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-orange-600 text-sm font-bold text-white"
+        >
+          SV
+        </div>
+        <span class="text-center text-xs font-semibold">Svelte</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-blue-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-700 text-sm font-bold text-white"
+        >
+          TS
+        </div>
+        <span class="text-center text-xs font-semibold">TypeScript</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-yellow-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-600 text-sm font-bold text-black"
+        >
+          JS
+        </div>
+        <span class="text-center text-xs font-semibold">JavaScript</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-emerald-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600 text-sm font-bold text-white"
+        >
+          TW
+        </div>
+        <span class="text-center text-xs font-semibold">Tailwind</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-emerald-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600 text-sm font-bold text-white"
+        >
+          TW
+        </div>
+        <span class="text-center text-xs font-semibold">Tailwind</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-emerald-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600 text-sm font-bold text-white"
+        >
+          TW
+        </div>
+        <span class="text-center text-xs font-semibold">Tailwind</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-emerald-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600 text-sm font-bold text-white"
+        >
+          TW
+        </div>
+        <span class="text-center text-xs font-semibold">Tailwind</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-emerald-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600 text-sm font-bold text-white"
+        >
+          TW
+        </div>
+        <span class="text-center text-xs font-semibold">Tailwind</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backend Section -->
+  <div id={CAT[1]} class="w-full shrink-0 snap-center px-4">
+    <h3 class="mb-4 text-center text-xl font-bold text-red-300">Backend</h3>
+    <div class="grid w-full grid-cols-2 gap-4">
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-green-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-green-600 text-sm font-bold text-white"
+        >
+          ND
+        </div>
+        <span class="text-center text-xs font-semibold">Node.js</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-blue-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-sm font-bold text-white"
+        >
+          PY
+        </div>
+        <span class="text-center text-xs font-semibold">Python</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-orange-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-orange-600 text-sm font-bold text-white"
+        >
+          RS
+        </div>
+        <span class="text-center text-xs font-semibold">Rust</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-gray-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600 text-sm font-bold text-white"
+        >
+          GO
+        </div>
+        <span class="text-center text-xs font-semibold">Golang</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-green-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-green-700 text-sm font-bold text-white"
+        >
+          DJ
+        </div>
+        <span class="text-center text-xs font-semibold">Django</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-red-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-red-600 text-sm font-bold text-white"
+        >
+          RB
+        </div>
+        <span class="text-center text-xs font-semibold">Ruby</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Database Section -->
+  <div id={CAT[2]} class="w-full shrink-0 snap-center px-4">
+    <h3 class="mb-4 text-center text-xl font-bold text-red-300">Database</h3>
+    <div class="grid w-full grid-cols-2 gap-4">
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-indigo-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white"
+        >
+          PG
+        </div>
+        <span class="text-center text-xs font-semibold">PostgreSQL</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-green-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-green-700 text-sm font-bold text-white"
+        >
+          MG
+        </div>
+        <span class="text-center text-xs font-semibold">MongoDB</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-red-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-red-600 text-sm font-bold text-white"
+        >
+          RD
+        </div>
+        <span class="text-center text-xs font-semibold">Redis</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-yellow-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-600 text-sm font-bold text-black"
+        >
+          MY
+        </div>
+        <span class="text-center text-xs font-semibold">MySQL</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-slate-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-slate-600 text-sm font-bold text-white"
+        >
+          SQ
+        </div>
+        <span class="text-center text-xs font-semibold">SQLite</span>
+      </div>
+      <div
+        class="glass-card flex aspect-square flex-col items-center justify-center rounded-xl p-3 transition-colors hover:bg-orange-950/20"
+      >
+        <div
+          class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-orange-600 text-sm font-bold text-white"
+        >
+          FB
+        </div>
+        <span class="text-center text-xs font-semibold">Firebase</span>
+      </div>
+    </div>
+  </div>
+</div>

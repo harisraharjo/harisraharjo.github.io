@@ -1,0 +1,61 @@
+---
+// interface Props {
+//     sections: string[]
+// }
+
+// const {sections} = Astro.props
+---
+
+<script is:inline>
+  let current = 0
+  let f = sections;
+  const CAT = ['pl', 'web', 'back']
+  const idxs = CAT.length - 1
+
+  const focus = (id) => {
+    const target = document.getElementById(CAT.at(id))
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }
+  }
+
+  function nextSection() {
+    let prev = current
+    current = Math.min(current + 1, idxs)
+    if (prev !== current) focus(current)
+  }
+
+  function prevSection() {
+    let prev = current
+    current = Math.max(current - 1, 0)
+    if (prev !== current) focus(current)
+  }
+</script>
+
+<>
+  <a
+    onclick="prevSection()"
+    class="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-x-2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-950/80 text-white transition-all hover:bg-red-900/80"
+  >
+    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </a>
+
+  <a
+    onclick="nextSection()"
+    class="absolute top-1/2 right-0 z-10 flex h-10 w-10 translate-x-2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-950/80 text-white transition-all hover:bg-red-900/80"
+  >
+    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5l7 7-7 7"></path>
+    </svg>
+  </a>
+</>

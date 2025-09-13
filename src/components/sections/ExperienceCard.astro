@@ -1,17 +1,38 @@
 ---
 import { EXPERIENCE } from '../../lib/constants'
+import Card from '../Card.astro'
 ---
 
-<div class="mt-2 space-y-4">
+<div class="pt-8 space-y-4">
   {
-    EXPERIENCE.slice(0, 3).map((exp) => (
-      <div>
-        <h3 class="text-lg font-semibold">{exp.position}</h3>
-        <p class="text-primary text-sm">{exp.company}</p>
-        <p class="text-sm text-gray-600">
-          {exp.start} - {exp.end}
-        </p>
-      </div>
+    EXPERIENCE.map((entry) => (
+      <Card styling="flex flex-col gap-4">
+        <div slot={'content'}>
+          <div class="mb-4 text-sm uppercase">
+            {entry.start} - {entry.end}
+          </div>
+          <h3 class={`text-primary font-semibold`}>{entry.company}</h3>
+          <div class="text-sm font-semibold">{entry.position}</div>
+          {entry.tasks.map((i) => {
+            if (entry.tasks.length > 1) {
+              return (
+                <ul class="prose dark:prose-invert list-outside list-disc space-y-2 pl-6">
+                  <li>{i}</li>
+                </ul>
+              )
+            }
+
+            return <p>{i}</p>
+          })}
+        </div>
+        <div slot="footer" class="flex flex-wrap gap-1">
+          {entry.tools.map((tool) => (
+            <Card styling="px-4 py-2 bg-orange-500/20 backdrop-blur-md border border-orange-400/30 text-orange-200 rounded-full text-sm text-center">
+              <p slot="content">{tool}</p>
+            </Card>
+          ))}
+        </div>
+      </Card>
     ))
   }
 </div>

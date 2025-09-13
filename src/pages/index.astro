@@ -4,7 +4,8 @@ import Tech from '../components/sections/Tech.astro'
 import Card from '../components/Card.astro'
 import ExperienceCard from '../components/sections/ExperienceCard.astro'
 import { Terminal } from '../components/ui/terminal'
-import { SquareArrowOutUpRight } from 'lucide-react'
+import { ArrowLeftCircle, SquareArrowOutUpRight } from 'lucide-react'
+import Carousel from '../components/sections/Carousel.astro'
 //
 ---
 
@@ -42,18 +43,37 @@ import { SquareArrowOutUpRight } from 'lucide-react'
   <main
     class="relative m-auto grid w-full max-w-6xl gap-2 p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-8 lg:grid-cols-4 lg:gap-4"
   >
-    <Card colSpan="md:col-span-4" rowSpan="md:row-span-1" padding={0} gap={4}>
-      <!-- <TerminalIcon className='my-4 mx-2'/> -->
-      <!-- <div
-        class="flex h-full w-full flex-col m-0 p-0"
-        >
-        <Terminal client:load />
-      </div> -->
+    <Card colSpan="md:col-span-2" rowSpan="md:row-span-1" padding={0} gap={4}>
       <Terminal slot="content" client:load />
       <!-- <IntroCard /> -->
     </Card>
-    <Card colSpan="md:col-span-3" rowSpan="md:row-span-1" title="Experience">
-      <a
+    <Card colSpan="md:col-span-2" rowSpan="md:row-span-1" >
+      <!-- <div class="flex gap-4 overflow-x-auto pt-0" slot="header">
+        <a
+          href="#frontend"
+          class="glass-card rounded-full px-3 py-1 text-xs transition-colors hover:bg-red-950/50"
+          >Language</a
+        >
+        <a
+          href="#backend"
+          class="glass-card rounded-full px-3 py-1 text-xs transition-colors hover:bg-red-950/50"
+          >Backend</a
+        >
+        <a
+          href="#database"
+          class="glass-card rounded-full px-3 py-1 text-xs transition-colors hover:bg-red-950/50"
+          >Database</a
+        >
+      </div> -->
+      <!-- <ArrowLeftCircle className='absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-x-2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-950/80 text-white transition-all hover:bg-red-900/80'/> -->
+      
+      
+      <Carousel slot="content" />
+      <!-- <Tech slot="content" /> -->
+    </Card>
+    <Card colSpan="md:col-span-3" rowSpan="md:row-span-4" title="/experience">
+      <!-- {title && <h2 class="m-0 text-xl font-bold">{title}</h2>} -->
+      <!-- <a
         href="/experience"
         rel="noreferrer"
         class="hover:border-primary cursor-pointer"
@@ -63,25 +83,12 @@ import { SquareArrowOutUpRight } from 'lucide-react'
           className="hover:text-accent position absolute right-6"
           size={20}
         />
-      </a>
+      </a> -->
       <ExperienceCard slot="content" />
     </Card>
-    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1" title="Technologies">
-      <a
-        slot="header"
-        href="/tech"
-        rel="noreferrer"
-        class="hover:border-primary cursor-pointer"
-      >
-        <SquareArrowOutUpRight
-          className="hover:text-accent position absolute right-6"
-          size={20}
-        />
-      </a>
-      <Tech slot="content" />
-    </Card>
+
     <Card
-      colSpan="md:col-span-4"
+      colSpan="md:col-span-"
       rowSpan="md:row-span-1"
       title="Projects"
       href="/projects"
