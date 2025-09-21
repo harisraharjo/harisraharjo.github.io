@@ -1,9 +1,7 @@
 ---
 
 export interface Props {
-  data: {
-    id: string
-  }[]
+  data: string[]
 }
 
 const { data } = Astro.props
@@ -56,14 +54,14 @@ const { data } = Astro.props
     nextSection() {
       let prev = this.current
       this.current = Math.min(this.current + 1, this._dataCount)
-      let elementId = this._data.at(this.current)?.id
+      let elementId = this._data.at(this.current)
       if (prev !== this.current && elementId) this.focus(elementId)
     }
 
     prevSection() {
       let prev = this.current
       this.current = Math.max(this.current - 1, 0)
-      let elementId = this._data.at(this.current)?.id
+      let elementId = this._data.at(this.current)
       if (prev !== this.current && elementId) this.focus(elementId)
     }
 
