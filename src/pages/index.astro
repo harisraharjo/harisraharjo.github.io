@@ -9,37 +9,10 @@ import { Terminal } from '../components/ui/terminal'
 //
 ---
 
-<!-- <script>
-  import { stagger, spring, timeline, type TimelineDefinition } from 'motion'
-  import { loaderAnimation } from '../lib/constants'
-
-  const cards = document.querySelectorAll('.card-animate')
-
-  const sequence = [
-    loaderAnimation,
-    [
-      cards,
-      { y: ['40%', '0%'], opacity: [0, 1] },
-      {
-        at: '-0.1',
-        duration: 0.4,
-        delay: stagger(0.3),
-        easing: spring({ velocity: 100, stiffness: 50, damping: 10 }),
-      },
-    ],
-  ]
-
-  timeline(sequence as TimelineDefinition)
-</script> -->
 <BaseLayout
   title="Haris Raharjo - Software Engineer"
   description="Portfolio, Projects, CV, About Me, Contact"
 >
-  <!-- <div
-    slot="loader"
-    class="loader bg-darkslate-700 fixed bottom-0 left-0 right-0 top-0 z-50 flex h-screen w-screen items-center justify-center text-3xl font-black uppercase text-neutral-50"
-  >
-  </div> -->
   <main
     class="relative m-auto grid w-full max-w-6xl gap-2 p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-8 lg:grid-cols-4 lg:gap-4"
   >
@@ -53,40 +26,9 @@ import { Terminal } from '../components/ui/terminal'
       padding={0}
       styling="pt-4"
     >
-      <!-- <div class="flex gap-4 overflow-x-auto pt-0" slot="header">
-        <a
-          href="#frontend"
-          class="glass-card rounded-full px-3 py-1 text-xs transition-colors hover:bg-red-950/50"
-          >Language</a
-        >
-        <a
-          href="#backend"
-          class="glass-card rounded-full px-3 py-1 text-xs transition-colors hover:bg-red-950/50"
-          >Backend</a
-        >
-        <a
-          href="#database"
-          class="glass-card rounded-full px-3 py-1 text-xs transition-colors hover:bg-red-950/50"
-          >Database</a
-        >
-      </div> -->
-      <!-- <ArrowLeftCircle className='absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-x-2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-950/80 text-white transition-all hover:bg-red-900/80'/> -->
-
       <Tech slot="content" />
     </Card>
-    <Card colSpan="md:col-span-2" rowSpan="md:row-span-4" title="/experience">
-      <!-- {title && <h2 class="m-0 text-xl font-bold">{title}</h2>} -->
-      <!-- <a
-        href="/experience"
-        rel="noreferrer"
-        class="hover:border-primary cursor-pointer"
-        slot="header"
-      >
-        <SquareArrowOutUpRight
-          className="hover:text-accent position absolute right-6"
-          size={20}
-        />
-      </a> -->
+    <Card colSpan="md:col-span-2" rowSpan="md:row-span-4" title="Experience">
       <ExperienceCard slot="content" />
     </Card>
 
@@ -94,20 +36,8 @@ import { Terminal } from '../components/ui/terminal'
       colSpan="md:col-span-2"
       rowSpan="md:row-span-1"
       title="Projects"
-      href="/projects"
     >
-      <ProjectCard heading="My head" slot="content" />
-      <!-- <a
-        slot="header"
-        href="/projects"
-        rel="noreferrer"
-        class="hover:border-primary cursor-pointer"
-      >
-        <SquareArrowOutUpRight
-          className="hover:text-accent position absolute right-6"
-          size={20}
-        />
-      </a> -->
+      <ProjectCard slot="content" />
     </Card>
   </main>
 </BaseLayout>

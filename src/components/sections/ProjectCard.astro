@@ -1,5 +1,4 @@
 ---
-// import { Card as ShadcnCard } from './ui/card'
 import Card from '../Card.astro'
 
 // const {
@@ -40,7 +39,7 @@ const Projects: Project = [
   {
     name: 'Doctor Appointment Application',
     company: 'Geo Medica Clinic',
-    desc: 'An android application for a doctor appointment in Geo Medica clinic. Built using Kotlin, and Firebase Firestore',
+    desc: 'An Android app for doctor appointments at Geo Medica clinic. Built using Kotlin and Firebase Firestore.',
     tools: ['Android', 'Kotlin', 'Firestore'],
     status: 'archived',
   },
@@ -51,8 +50,8 @@ const Projects: Project = [
   {
     Projects.map((project) => (
       <div>
-        <div class="text-sm font-semibold">{project.name}</div>
-        <h3 class="text-primary font-semibold">{project.company}</h3>
+        <div class="text-primary font-semibold">{project.name}</div>
+        <h3 class="text-sm font-semibold">{project.company}</h3>
         <p>{project.desc}</p>
         <div class="mt-4 flex flex-wrap gap-1">
           {project.tools.map((tool) => (
@@ -64,20 +63,4 @@ const Projects: Project = [
       </div>
     ))
   }
-  <!-- <ShadcnCard
-    className={`transfor-y-[-40%] align-start perspective-1200 group relative flex-none transform justify-start overflow-hidden shadow-lg transition duration-75 ease-in-out ${href ? 'hover:border-primary cursor-pointer' : ''} `}
-  >
-    <img
-      src={imagePath}
-      alt={altText}
-      class="h-48 w-full rounded-2xl rounded-br-none rounded-bl-none object-cover"
-      loading="eager"
-    />
-    <div class="flex flex-col gap-y-0.5 px-5 py-4">
-      <h1 class="text-lg font-medium">{heading}</h1>
-      <h2 class="text-muted-foreground">{subheading}</h2>
-    </div>
-
-    <slot />
-  </ShadcnCard> -->
 </div>

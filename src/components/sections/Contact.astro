@@ -1,7 +1,13 @@
 ---
 import { Github, Linkedin, Mail, Phone } from 'lucide-react'
 import { buttonVariants } from '../ui/button'
-import { LINKS } from '../../lib/constants'
+
+const LINKS = {
+  github: 'https://github.com/harisraharjo',
+  linkedin: 'https://www.linkedin.com/in/harisrp/',
+  email: 'mailto:haris.workspace@gmail.com',
+  tel: 'tel:+6282122001254',
+}
 
 const buttonClass = buttonVariants({ variant: 'ghost' })
 const cv = '/cv.pdf'
