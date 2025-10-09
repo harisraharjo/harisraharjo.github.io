@@ -5,6 +5,7 @@ import ProjectCard from '../components/sections/ProjectCard.astro'
 import Card from '../components/Card.astro'
 import ExperienceCard from '../components/sections/ExperienceCard.astro'
 import { Terminal } from '../components/ui/terminal'
+import { ConstructionIcon } from 'lucide-react'
 // import { ArrowLeftCircle, SquareArrowOutUpRight } from 'lucide-react'
 //
 ---
@@ -32,11 +33,12 @@ import { Terminal } from '../components/ui/terminal'
       <ExperienceCard slot="content" />
     </Card>
 
-    <Card
-      colSpan="md:col-span-2"
-      rowSpan="md:row-span-1"
-      title="Projects"
-    >
+    <Card colSpan="md:col-span-2" rowSpan="md:row-span-1">
+      <h2 class="m-0 flex gap-2 text-xl font-bold" slot="header">
+        Projects
+        <ConstructionIcon />
+      </h2>
+
       <ProjectCard slot="content" />
     </Card>
   </main>

@@ -1,9 +1,9 @@
 {
-  "name": "@area44/astro-shadcn-ui-template",
+  "name": "@harisraharo/ana",
   "version": "23.12.26",
-  "description": "An Astro template for building apps.",
+  "description": "Portofolio.",
   "author": {
-    "name": "AREA44"
+    "name": "Haris Raharjo Putro"
   },
   "license": "MIT",
   "scripts": {
@@ -14,33 +14,33 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.0",
+    "@astrojs/react": "^4.4.0",
     "@astrojs/tailwind": "^6.0.2",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-slot": "^1.2.3",
-    "@tailwindcss/postcss": "^4.1.13",
-    "astro": "^5.13.5",
+    "@tailwindcss/postcss": "^4.1.14",
+    "astro": "^5.14.1",
     "astro-icon": "^1.1.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.542.0",
-    "motion": "^12.23.12",
+    "lucide-react": "^0.545.0",
+    "motion": "^12.23.22",
     "postcss": "^8.5.6",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "sharp": "^0.34.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "^0.34.4",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.13",
+    "tailwindcss": "^4.1.14",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^24.3.1",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
+    "@types/node": "^24.7.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67"
 }
