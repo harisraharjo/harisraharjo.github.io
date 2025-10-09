@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "@area44/astro-shadcn-ui-template",
+      "name": "@harisraharo/ana",
       "dependencies": {
         "@astrojs/react": "^4.4.0",
         "@astrojs/tailwind": "^6.0.2",

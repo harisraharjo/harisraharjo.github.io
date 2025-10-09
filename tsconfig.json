@@ -9,7 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "strict": false,
+    "strict": true,
     "allowJs": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
