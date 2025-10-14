@@ -4,7 +4,7 @@ import Tech from '../components/sections/Tech.astro'
 import ProjectCard from '../components/sections/ProjectCard.astro'
 import Card from '../components/Card.astro'
 import ExperienceCard from '../components/sections/ExperienceCard.astro'
-import { Terminal } from '../components/ui/terminal'
+import Terminal from '../components/terminal/index.astro'
 import { ConstructionIcon } from 'lucide-react'
 // import { ArrowLeftCircle, SquareArrowOutUpRight } from 'lucide-react'
 //
@@ -18,7 +18,7 @@ import { ConstructionIcon } from 'lucide-react'
     class="relative m-auto grid w-full max-w-6xl gap-2 p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-8 lg:grid-cols-4 lg:gap-4"
   >
     <Card colSpan="md:col-span-3" rowSpan="md:row-span-1" padding={0} gap={4}>
-      <Terminal slot="content" client:load />
+      <Terminal slot="content" />
       <!-- <IntroCard /> -->
     </Card>
     <Card

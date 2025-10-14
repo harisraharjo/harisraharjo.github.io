@@ -18,9 +18,7 @@ const { title, description, ogImage } = Astro.props
     <HeadSEO title={title} description={description} ogImage={ogImage} />
     <ViewTransitions />
   </head>
-  <body
-    class="min-h-screen from-black via-rose-950 to-zinc-950 font-sans antialiased dark:bg-gradient-to-r"
-  >
+  <body class="min-h-screen font-sans antialiased">
     <div class="flex flex-col items-center justify-center">
       <Header />
       <slot />

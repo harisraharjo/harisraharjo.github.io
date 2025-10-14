@@ -4,6 +4,11 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "target": "ESNext",
+    "module": "ESNext",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
