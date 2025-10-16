@@ -182,14 +182,14 @@ export const Canvas = () => {
           <>
             {
               history.map((item, index) => (
-              <div key={index}>    
-                {item.type === 'input' && (
-                    <div class="mt-4 flex items-start gap-2">
-                      <span class="text-green">➜</span>
-                      <span class="text-blue">~</span>
+                <div key={index}>    
+                  {item.type === 'input' && (
+                    <div className="mt-4 flex items-start gap-2">
+                      <span className="text-green">➜</span>
+                      <span className="text-blue">~</span>
                       <div className="text-fg">{item.content}</div>
                     </div>
-                )}
+                  )}
                   {item.type === 'output' && (
                     <div className="text-aqua pl-6">{item.content}</div>
                   )}
@@ -197,56 +197,56 @@ export const Canvas = () => {
                 </div>
               ))
             }
-              <div className={`flex items-center pt-4`}>
-                <span className="mr-2 text-green">➜</span>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault()
-                      if (input.trim() !== '') {
-                        const newCommandHistory = [...commandHistory, input]
-                        setCommandHistory(newCommandHistory)
-                        setHistoryIndex(-1)
+            <div className={`flex items-center pt-4`}>
+              <span className="mr-2 text-green">➜</span>
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault()
+                    if (input.trim() !== '') {
+                      const newCommandHistory = [...commandHistory, input]
+                      setCommandHistory(newCommandHistory)
+                      setHistoryIndex(-1)
 
-                        const commandOutput = executeCommand(input)
-                        let newHistory: HistoryItem[] = [DEFAULT_PROMPT]
-                        if (commandOutput.length) {
-                          newHistory = [
-                            ...history.slice(0, -1),
-                            { type: 'input', content: `${input}` },
-                            ...commandOutput.map((line) => ({
-                              type: 'output',
-                              content: line,
-                            })),
-                            DEFAULT_PROMPT,
-                          ]
-                        }
-
-                        setHistory(newHistory)
-                        if (input === "dino") {
-                          toggleGame()
-                        }
-
-                        setInput('')
+                      const commandOutput = executeCommand(input)
+                      let newHistory: HistoryItem[] = [DEFAULT_PROMPT]
+                      if (commandOutput.length) {
+                        newHistory = [
+                          ...history.slice(0, -1),
+                          { type: 'input', content: `${input}` },
+                          ...commandOutput.map((line) => ({
+                            type: 'output',
+                            content: line,
+                          })),
+                          DEFAULT_PROMPT,
+                        ]
                       }
-                      handleTerminalClick()
-                    } else {
-                      handleKeyDown(e)
+
+                      setHistory(newHistory)
+                      if (input === "dino") {
+                        toggleGame()
+                      }
+
+                      setInput('')
                     }
-                  }}
-                  className="flex-1 border-none bg-transparent font-mono outline-none"
-                  placeholder="Enter command..."
-                  autoComplete="off"
-                  spellCheck="false"
-                />
-              </div>
-            </>
-          )
-        }
-      </div>
+                    handleTerminalClick()
+                  } else {
+                    handleKeyDown(e)
+                  }
+                }}
+                className="flex-1 border-none bg-transparent font-mono outline-none"
+                placeholder="Enter command..."
+                autoComplete="off"
+                spellCheck="false"
+              />
+            </div>
+          </>
+        )
+      }
+    </div>
   )
 }

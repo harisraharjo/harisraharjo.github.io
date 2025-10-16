@@ -8,9 +8,12 @@ interface Props {
 const { data } = Astro.props
 ---
 
-<div
-  class="flex max-h-96 w-full snap-x snap-mandatory gap-8 overflow-y-auto scroll-smooth"
->
-  <Nav data={data}/>
-  <slot />
-</div>
+<>
+  <Nav data={data} />
+  <div
+    id="carousel-content-container"
+    class="webkit-scroll-touch custom-scroll-x flex snap-x snap-mandatory gap-0 scroll-smooth"
+  >
+    <slot />
+  </div>
+</>

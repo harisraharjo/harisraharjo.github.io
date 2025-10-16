@@ -1,5 +1,4 @@
 ---
-
 export interface Props {
   data: string[]
 }
@@ -7,72 +6,38 @@ export interface Props {
 const { data } = Astro.props
 ---
 
-<carousel-nav data-navData={JSON.stringify(data)}>
-  <a
-    class="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-x-2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-950/80 text-white transition-all hover:bg-red-900/80"
-  >
-    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M15 19l-7-7 7-7"></path>
-    </svg>
-  </a>
-
-  <a
-    class="absolute top-1/2 right-0 z-10 flex h-10 w-10 translate-x-2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-950/80 text-white transition-all hover:bg-red-900/80"
-  >
-    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M9 5l7 7-7 7"></path>
-    </svg>
-  </a>
-</carousel-nav>
+<div
+  class="flex flex-wrap gap-2 mt-8"
+  id="carousel-nav"
+>
+  {
+  data.map((item, i) => {
+      return (
+      <a href=`#tech-${i}` class="carousel-nav text-grey active:text-green hover:bg-darker focus:bg-surface focus:text-green cursor-pointer rounded-lg rounded-t-lg px-4 py-2 transition-colors focus:outline-none">
+          {item}
+        </a>
+      )
+    })
+  }
+</div>
 
 <script>
-  class CarouselNav extends HTMLElement {
-    _data: any[]
-    _dataCount: number = 0
-    current = 0
-    constructor() {
-      super()
-      this._data = JSON.parse(this.dataset.navdata!)
-      this._dataCount = this._data!.length
-    }
+const nav = document.getElementById('carousel-nav');
+const container = document.getElementById("carousel-content-container")
+nav.addEventListener("click", (e) => {
+  e.preventDefault();
+  const clickedAnchor = (e.target as HTMLElement).closest("a");
+  if (clickedAnchor) {
+    const href = clickedAnchor.getAttribute("href");
+    const targetElement = document.querySelector(href) as HTMLElement;
 
-    focus(id) {
-      const target = document.getElementById(id)
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-      }
-    }
-
-    nextSection() {
-      let prev = this.current
-      this.current = Math.min(this.current + 1, this._dataCount)
-      let elementId = this._data.at(this.current)
-      if (prev !== this.current && elementId) this.focus(elementId)
-    }
-
-    prevSection() {
-      let prev = this.current
-      this.current = Math.max(this.current - 1, 0)
-      let elementId = this._data.at(this.current)
-      if (prev !== this.current && elementId) this.focus(elementId)
-    }
-
-    connectedCallback() {
-      const prevArrow = this.children[0]
-      prevArrow!.addEventListener('click', () => this.prevSection())
-
-      const nextArrow = this.children[1]
-      nextArrow!.addEventListener('click', () => this.nextSection())
-    }
+    if (targetElement && container) {
+      const targetOffset = targetElement.offsetLeft;
+      container.scrollTo({
+        left: targetOffset,
+        behavior: "smooth"
+      })
+    }    
   }
-
-  customElements.define('carousel-nav', CarouselNav)
+})
 </script>
