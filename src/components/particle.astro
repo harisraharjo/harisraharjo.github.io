@@ -1,0 +1,94 @@
+<style>
+  /* Define the custom CSS for the ASCII particle effect */
+  #ascii-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ascii-particle {
+    position: absolute;
+    color: #00ff00; /* Adjust color as needed */
+    font-family: monospace;
+    font-size: 14px; /* Adjust size for effect */
+    opacity: 0.5;
+    pointer-events: none; /* Allows mouse to interact with elements underneath */
+    will-change: transform, opacity; /* Optimize for performance */
+  }
+</style>
+
+<div id="ascii-container" class="h-full w-full"></div>
+
+<script>
+  const container = document.getElementById("ascii-container")
+  const parentContainer = document.getElementById("ascii-art-container")
+  const particleCount = 200
+  const particles = []
+  const characters = ["/", "\\", "-", "|", "*", "+", ".", ":", ";", "="]
+  const mouse = {
+    x: parentContainer.clientWidth / 2,
+    y: parentContainer.clientHeight / 2,
+  }
+  const maxVelocity = 0.5
+  const repulsionRadius = 100
+  const repulsionStrength = 0.1
+  const friction = 0.98
+
+  function createParticle() {
+    const particle = document.createElement("span")
+    particle.className = "ascii-particle skew-ascii"
+    particle.textContent =
+      characters[Math.floor(Math.random() * characters.length)]
+    container.appendChild(particle)
+
+    return {
+      element: particle,
+      x: Math.random() * parentContainer.clientWidth,
+      y: Math.random() * parentContainer.clientHeight,
+      vx: (Math.random() - 0.5) * maxVelocity,
+      vy: (Math.random() - 0.5) * maxVelocity,
+    }
+  }
+
+  // Initialize particles
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(createParticle())
+  }
+  parentContainer.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX
+    mouse.y = e.clientY
+  })
+
+  // Animation loop
+  function animate() {
+    for (const p of particles) {
+      const dx = mouse.x - p.x
+      const dy = mouse.y - p.y
+      const dist = Math.sqrt(dx * dx + dy * dy)
+
+      if (dist < repulsionRadius) {
+        const force = (repulsionRadius - dist) / repulsionRadius
+        p.vx -= (dx / dist) * force * repulsionStrength
+        p.vy -= (dy / dist) * force * repulsionStrength
+      }
+
+      p.vx *= friction
+      p.vy *= friction
+
+      p.x += p.vx
+      p.y += p.vy
+      if (p.x < 0) p.x = parentContainer.clientWidth
+      if (p.x > parentContainer.clientWidth) p.x = 0
+      if (p.y < 0) p.y = parentContainer.clientHeight
+      if (p.y > parentContainer.clientHeight) p.y = 0
+
+      p.element.style.transform = `translate(${p.x}px, ${p.y}px) skewX(-10deg)`
+
+      p.element.style.transform = `translate(${p.x}px, ${p.y}px) skewX(-10deg)`
+    }
+    requestAnimationFrame(animate)
+  }
+
+  animate()
+</script>

@@ -1,53 +1,49 @@
 ---
-import Card from '../Card.astro'
-// import {} from "lucide-react"
-
 export const EXPERIENCE = [
   {
-    company: 'Evo Smartlife',
-    location: 'Indonesia',
-    position: 'Fullstack Software Engineer',
-    start: '2023',
-    link: 'https://straico.com/',
-    end: '2024',
+    company: "Evo Smartlife",
+    location: "Indonesia",
+    position: "Fullstack Software Engineer",
+    start: "2023",
+    link: "https://straico.com/",
+    end: "2024",
     tasks: [
-      'Proactively determined and analyzed the negative impacts caused by existing tools and led the creation of a new frontend on top of existing tools',
-      'Identified, fixed the database which then results in a better clustering and an increase query performance and better database paging',
-      'Built a couple desktop applications with a low memory footprint to fit in user hardware specification for monitoring and automation',
-      'Maintain & develop a backend with real time system capability',
+      "Proactively determined and analyzed the negative impacts caused by existing tools and led the creation of a new frontend on top of existing tools",
+      "Identified, fixed the database which then results in a better clustering and an increase query performance and better database paging",
+      "Built a couple desktop applications with a low memory footprint to fit in user hardware specification for monitoring and automation",
+      "Maintain & develop a backend with real time system capability",
     ],
     tools: [
-      'Python',
-      'Rust',
-      'HomeAssistant',
-      'Javascript',
-      'HTML',
-      'CSS',
-      'MySql',
-      'AWS',
+      "Python",
+      "Rust",
+      "HomeAssistant",
+      "Javascript",
+      "VueJS",
+      "MySql",
+      "AWS",
     ],
   },
   {
-    company: 'Merpati Maintenance Facility',
-    location: 'Indonesia',
-    position: 'Freelance Backend Developer',
-    start: '2019',
-    link: '',
-    end: '2019',
-    tasks: ['Developed REST API in Laravel for warehouses management system'],
-    tools: ['Laravel', 'PHP'],
+    company: "Merpati Maintenance Facility",
+    location: "Indonesia",
+    position: "Freelance Backend Developer",
+    start: "2019",
+    link: "",
+    end: "2019",
+    tasks: ["Developed REST API in Laravel for warehouses management system"],
+    tools: ["Laravel", "PHP"],
   },
   {
-    company: 'Geo Medika Clinic',
-    location: 'Indonesia',
-    position: 'Freelance Android Developer',
-    start: '2019',
-    link: '',
-    end: '2019',
+    company: "Geo Medika Clinic",
+    location: "Indonesia",
+    position: "Freelance Android Developer",
+    start: "2019",
+    link: "",
+    end: "2019",
     tasks: [
-      'Develop an android application for doctor appointment using a NoSQL document based as the database',
+      "Develop an android application for doctor appointment using a NoSQL document based as the database",
     ],
-    tools: ['Android', 'Kotlin', 'Firestore'],
+    tools: ["Android", "Kotlin", "Firestore"],
   },
 ]
 ---
@@ -56,11 +52,11 @@ export const EXPERIENCE = [
   {
     EXPERIENCE.map((entry) => (
       <div>
-        <div class="text-sm uppercase">
+        <div class="text-xl font-semibold">{entry.position}</div>
+        <h3 class="text-grey text-sm font-semibold">{entry.company}</h3>
+        <div class="text-grey text-sm uppercase">
           {entry.start} - {entry.end}
         </div>
-        <div class="text-primary font-semibold">{entry.position}</div>
-        <h3 class="text-sm font-semibold">{entry.company}</h3>
         {entry.tasks.map((i) => {
           if (entry.tasks.length > 1) {
             return (
@@ -72,11 +68,12 @@ export const EXPERIENCE = [
 
           return <p>{i}</p>
         })}
-        <div class="mt-4 flex flex-wrap gap-1">
-          {entry.tools.map((tool) => (
-            <Card styling="px-4 py-2 bg-orange-500/20 backdrop-blur-md border border-orange-400/30 text-orange-200 rounded-full text-sm text-center">
-              <p slot="content">{tool}</p>
-            </Card>
+        <div class="text-aqua mt-4 flex flex-wrap gap-1">
+          {entry.tools.map((tool, i) => (
+            <>
+              {i !== 0 && <span>•</span>}
+              <span>{tool}</span>
+            </>
           ))}
         </div>
       </div>

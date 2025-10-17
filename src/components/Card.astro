@@ -1,5 +1,5 @@
 ---
-import { Card as ShadcnCard } from './ui/card'
+import { Card as ShadcnCard } from "./ui/card"
 
 interface Props {
   title?: string
@@ -23,7 +23,7 @@ const {
 ---
 
 <ShadcnCard
-  className={`border-zinc-700/40 bg-zinc-900/30 backdrop-blur-sm gap-${gap} card-animate transform-y-[-40%] align-start perspective-1200 group relative col-span-1 h-auto flex-none transform justify-start overflow-hidden p-${padding} shadow-lg transition duration-75 ease-in-out ${colSpan} ${rowSpan} ${href ? 'hover:border-primary cursor-pointer' : ''} ${styling}`}
+  className={`border-zinc-700/40 bg-zinc-900/30 backdrop-blur-sm gap-${gap} card-animate transform-y-[-40%] align-start perspective-1200 group relative col-span-1 h-auto flex-none transform justify-start overflow-hidden p-${padding} shadow-lg transition duration-75 ease-in-out ${colSpan} ${rowSpan} ${href ? "hover:border-primary cursor-pointer" : ""} ${styling}`}
 >
   <>
     {title && <h2 class="m-0 text-xl font-bold">{title}</h2>}

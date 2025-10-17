@@ -1,9 +1,9 @@
 // tailwind.config.ts
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss"
 
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-} satisfies Config;
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+} satisfies Config
 
 // import type { Config } from 'tailwindcss'
 // import { fontFamily } from 'tailwindcss/defaultTheme'

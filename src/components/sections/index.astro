@@ -1,0 +1,35 @@
+---
+interface Props {
+  id?: string
+  title: string
+}
+
+const { title, id } = Astro.props
+---
+
+<style>
+  .section-title::first-letter {
+    color: var(--color-red);
+    font-weight: bold;
+  }
+
+  .section-title-container::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background: var(--color-red);
+  }
+</style>
+<section id={id} class="px-6 py-20 md:col-span-4">
+  <div class="mx-auto max-w-5xl">
+    <h2
+      class="section-title-container flex items-center gap-2 text-2xl font-bold"
+    >
+      <span class="section-title text-green">
+        {title}
+      </span>
+      <slot name="header" />
+    </h2>
+    <slot name="content" />
+  </div>
+</section>

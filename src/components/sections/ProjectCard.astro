@@ -1,7 +1,5 @@
 ---
-import Card from '../Card.astro'
-
-type ProjectStatus = 'confidential' | 'archived' | 'live'
+type ProjectStatus = "confidential" | "archived" | "live"
 
 type Project = {
   name: string
@@ -12,26 +10,26 @@ type Project = {
 }[]
 const Projects: Project = [
   {
-    name: 'Client Desktop Application',
-    company: 'Evo Smartlife',
-    desc: 'A client desktop application that wraps multiple tools to support the main AI application on the client desktop server. I developed it using Rust, Python, and sqlite',
-    tools: ['Rust', 'Python', 'sqlite'],
-    status: 'confidential',
+    name: "Client Desktop Application",
+    company: "Evo Smartlife",
+    desc: "A client desktop application that wraps multiple tools to support the main AI application on the client desktop server. I developed it using Rust, Python, and sqlite",
+    tools: ["Rust", "Python", "sqlite"],
+    status: "confidential",
   },
   {
-    name: 'Frontend Hub',
-    company: 'Evo Smartlife',
-    desc: 'A new SPA frontend to replace the old one for the Evo Smartlife hub. I initiated the development before handing it over to the Lead Developer. Built using VueJS and Javascript',
-    tools: ['Vue', 'Javascript'],
-    status: 'confidential',
+    name: "Frontend Hub",
+    company: "Evo Smartlife",
+    desc: "A new SPA frontend to replace the old one for the Evo Smartlife hub. I initiated the development before handing it over to the Lead Developer. Built using VueJS and Javascript",
+    tools: ["VueJS", "Javascript"],
+    status: "confidential",
   },
 
   {
-    name: 'Doctor Appointment Application',
-    company: 'Geo Medica Clinic',
-    desc: 'An Android app for doctor appointments at Geo Medica clinic. Built using Kotlin and Firebase Firestore.',
-    tools: ['Android', 'Kotlin', 'Firestore'],
-    status: 'archived',
+    name: "Doctor Appointment Application",
+    company: "Geo Medica Clinic",
+    desc: "An Android app for doctor appointments at Geo Medica clinic. Built using Kotlin and Firebase Firestore.",
+    tools: ["Android", "Kotlin", "Firestore"],
+    status: "archived",
   },
 ]
 ---
@@ -40,14 +38,15 @@ const Projects: Project = [
   {
     Projects.map((project) => (
       <div>
-        <div class="text-primary font-semibold">{project.name}</div>
-        <h3 class="text-sm font-semibold">{project.company}</h3>
+        <div class="text-xl font-semibold">{project.name}</div>
+        <h3 class="text-grey text-sm font-semibold">{project.company}</h3>
         <p>{project.desc}</p>
-        <div class="mt-4 flex flex-wrap gap-1">
-          {project.tools.map((tool) => (
-            <Card styling="px-4 py-2 bg-orange-500/20 backdrop-blur-md border border-orange-400/30 text-orange-200 rounded-full text-sm text-center">
-              <p slot="content">{tool}</p>
-            </Card>
+        <div class="text-aqua mt-4 flex flex-wrap gap-1">
+          {project.tools.map((tool, i) => (
+            <>
+              {i !== 0 && <span>•</span>}
+              <span>{tool}</span>
+            </>
           ))}
         </div>
       </div>

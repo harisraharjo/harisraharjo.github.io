@@ -1,19 +1,19 @@
 ---
-import { Github, Linkedin, Mail, Phone } from 'lucide-react'
-import { buttonVariants } from '../ui/button'
+import { Github, Linkedin, Mail, Phone } from "lucide-react"
+import { buttonVariants } from "../ui/button"
 
 const LINKS = {
-  github: 'https://github.com/harisraharjo',
-  linkedin: 'https://www.linkedin.com/in/harisrp/',
-  email: 'mailto:haris.workspace@gmail.com',
-  tel: 'tel:+6282122001254',
+  github: "https://github.com/harisraharjo",
+  linkedin: "https://www.linkedin.com/in/harisrp/",
+  email: "mailto:haris.workspace@gmail.com",
+  tel: "tel:+6282122001254",
 }
 
-const buttonClass = buttonVariants({ variant: 'ghost' })
-const cv = '/cv.pdf'
+const buttonClass = buttonVariants({ variant: "ghost" })
+const cv = "/cv.pdf"
 
 interface Props {
-  styling?: astroHTML.JSX.HTMLAttributes['class']
+  styling?: astroHTML.JSX.HTMLAttributes["class"]
 }
 
 const { styling } = Astro.props
@@ -24,7 +24,7 @@ const { styling } = Astro.props
     href={cv}
     target="_blank"
     rel="noreferrer"
-    class="dark:hover:decoration-accent py-1 text-sm underline-offset-4 hover:underline"
+    class="link-hover text-green py-1 text-sm underline-offset-4"
   >
     Resume
   </a>
@@ -32,7 +32,7 @@ const { styling } = Astro.props
     href={LINKS.tel}
     target="_blank"
     rel="noreferrer"
-    class={`${buttonClass} dark:hover:text-accent dark:hover:bg-card`}
+    class={`${buttonClass} link-hover text-green`}
   >
     <Phone size={15} />
   </a>
@@ -40,7 +40,7 @@ const { styling } = Astro.props
     href={LINKS.github}
     target="_blank"
     rel="noreferrer"
-    class={`${buttonClass} dark:hover:text-accent dark:hover:bg-card`}
+    class={`${buttonClass} link-hover text-green`}
   >
     <Github size={15} />
   </a>
@@ -48,7 +48,7 @@ const { styling } = Astro.props
     href={LINKS.email}
     target="_blank"
     rel="noreferrer"
-    class={`${buttonClass} dark:hover:text-accent dark:hover:bg-card`}
+    class={`${buttonClass} link-hover text-green`}
   >
     <Mail size={15} />
   </a>
@@ -56,7 +56,7 @@ const { styling } = Astro.props
     href={LINKS.linkedin}
     target="_blank"
     rel="noreferrer"
-    class={`${buttonClass} dark:hover:text-accent dark:hover:bg-card`}
+    class={`${buttonClass} link-hover text-green`}
   >
     <Linkedin size={15} />
   </a>

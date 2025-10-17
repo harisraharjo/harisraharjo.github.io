@@ -3,8 +3,6 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-
-  
   /* Your original shadcn/ui color system */
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -32,8 +30,7 @@
   --border-radius-sm: calc(var(--radius) - 4px);
 
   /* Typography */
-  --font-family-sans: 'Inter', system-ui, sans-serif;
-  
+  --font-family-sans: "Inter", system-ui, sans-serif;
 }
 /* .crimson-dark-3 {
   background: linear-gradient(135deg, hsl(348, 83%, 7%), hsl(348, 83%, 12%), hsl(220, 13%, 5%));

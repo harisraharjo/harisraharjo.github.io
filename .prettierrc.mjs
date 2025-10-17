@@ -3,7 +3,16 @@ export default {
   printWidth: 80,
   tabWidth: 2,
   semi: false,
-  singleQuote: true,
-  endOfLine: 'lf',
-  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
+  trailingComma: "all",
+  singleQuote: false,
+  endOfLine: "lf",
+  plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  overrides: [
+    {
+      files: "*.astro",
+      options: {
+        parser: "astro",
+      },
+    },
+  ],
 }
