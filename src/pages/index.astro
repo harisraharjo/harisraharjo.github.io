@@ -3,72 +3,23 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import Tech from "../components/sections/Tech.astro"
 import Section from "../components/sections/index.astro"
 import ProjectCard from "../components/sections/ProjectCard.astro"
-// import Card from '../components/Card.astro'
 import ExperienceCard from "../components/sections/ExperienceCard.astro"
 import Terminal from "../components/terminal/index.astro"
 import { ConstructionIcon } from "lucide-react"
-// import { ArrowLeftCircle, SquareArrowOutUpRight } from 'lucide-react'
-//
-const code_block = `
-01110111
-01100101
-01101100
-01100011
-01101111
-01101101
-01100101
-`
 ---
 
-<!-- <style> --><!--   h2::first-letter() { --><!--     color: var(--color-red); --><!--   } --><!-- </style> -->
-<script>
-  document
-    .getElementById("translateBtn")
-    .addEventListener("click", function () {
-      const meaning = document.getElementById("meaning")
-      const code_block = document.getElementById("code")
-      meaning.classList.toggle("hidden")
-      code_block.classList.toggle("hidden")
-    })
-</script>
 <BaseLayout
   title="Haris Raharjo - Software Engineer"
   description="Portfolio, Projects, CV, About Me, Contact"
 >
   <main
-    class="m-auto grid w-full max-w-6xl auto-rows-auto gap-2 md:grid-cols-2 md:gap-3 md:p-8 lg:grid-cols-4 lg:gap-4"
+    class="m-auto grid w-full max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-4"
   >
     <section
-      class="fade-in col-span-1 flex min-h-screen w-full max-w-5xl items-center px-6 pt-12 md:col-span-2 lg:col-span-3"
+      class="fade-in custom-scroll flex min-h-screen w-full max-w-5xl items-center overflow-x-auto px-6 md:col-span-4"
     >
-      <Terminal slot="content" />
+      <Terminal />
     </section>
-    <div
-      class="hidden items-center justify-center md:col-span-1 lg:col-span-1 lg:flex lg:flex-col"
-    >
-      <pre
-        class="text-green ascii-h font-mono text-2xl leading-tight opacity-50">
-    .-------.
-   /       /|
-  '-------' |
-  |       | '
-  |       |/
-  '-------'
-      </pre>
-
-      <pre
-        id="meaning"
-        class="text-green skew-ascii hidden font-mono text-sm leading-tight opacity-50">
-        Haris
-      </pre>
-      <button
-        id="translateBtn"
-        class="text-aqua border-aqua hover:bg-surface rounded border px-3 text-xs transition-all"
-      >
-        Translate
-      </button>
-    </div>
-
     <Section title="Technologies" id="tech">
       <Tech slot="content" />
     </Section>
@@ -76,7 +27,7 @@ const code_block = `
       <ExperienceCard slot="content" />
     </Section>
     <Section title="Project" id="project">
-      <ConstructionIcon slot="header" />
+      <ConstructionIcon slot="header" className="text-aqua" />
       <ProjectCard slot="content" />
     </Section>
   </main>

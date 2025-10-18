@@ -1,5 +1,6 @@
 ---
 import Carousel from '../ui/carousel/index.astro'
+import Tooltip from "../ui/tooltip.astro"
 import { Icon } from 'astro-icon/components'
 
 export const techs = [
@@ -69,7 +70,10 @@ const navIDs = techs.map((tech) => tech.name)
     <div class="flex-wrap flex gap-4">
       {
       tech.members.map((member, i) => {
-      return <Icon name={tech.icons[i]} width="3rem" height="3rem" class="shrink-0 min-w-0 max-w-full flex-initial" />
+      return <Tooltip>
+        <Icon slot='content' name={tech.icons[i]} width="3rem" height="3rem" class="stroke-current shrink-0 min-w-0 max-w-full flex-initial" />
+        <p slot="tooltip">{member}</p>
+      </Tooltip>
       })
       }
     </div>

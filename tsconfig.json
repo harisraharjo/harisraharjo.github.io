@@ -6,7 +6,7 @@
     "jsxImportSource": "react",
     "allowImportingTsExtensions": true,
     "moduleResolution": "bundler",
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "target": "ESNext",
     "module": "ESNext",
     "baseUrl": ".",

@@ -1,22 +1,116 @@
 ---
-import { Canvas } from "./playground.tsx"
+// import { Canvas } from "./playground.tsx"
+import { code, type Token } from "./code.ts"
+
+const syntaxHighlighting = (token: Token): string => {
+  switch (token.ty) {
+    case "function":
+      return "text-yellow"
+    case "keyword":
+      return "text-red"
+    case "comment":
+      return "text-blue"
+    // case "attribute":
+    case "type":
+      return "text-aqua"
+    case "blank":
+    case "operator":
+      return ""
+    default:
+      return `${token.ty}`
+  }
+}
 ---
 
-<div
-  class="bg-darker border-dim w-full max-w-3xl overflow-hidden rounded-lg border shadow-xl"
->
+<style>
+  pre {
+    counter-reset: line;
+    display: block;
+    white-space: pre;
+    /* background-color: #f0f0f0; */
+    /* padding: 10px; */
+    /* padding-top: 2em; */
+    margin: 0;
+  }
+
+  code {
+    counter-increment: line;
+    display: block;
+  }
+
+  code::before {
+    content: counter(line); /* display: inline-block; */
+    text-align: right;
+    padding-right: 1em;
+    /* margin-right: 0.5em; */
+    color: #888;
+    -webkit-user-select: none; /* Prevents line numbers from being selected */
+    user-select: none;
+  }
+
+  /* .keyword { */
+  /*   color: #569cd6; */
+  /* } */
+  /* .type { */
+  /*   color: #4ec9b0; */
+  /* } */
+  .string {
+    color: #ce9178;
+  }
+  /* .comment { */
+  /*   color: #6a9955; */
+  /* } */
+  /* .function { */
+  /*   color: #dcdcaa; */
+  /* } */
+  .number {
+    color: #b5cea8;
+  }
+  /* .operator { */
+  /*   color: #d4d4d4; */
+  /* } */
+  .macro {
+    color: #c586c0;
+  }
+  .attribute {
+    color: #9cdcfe;
+  }
+</style>
+
+<div class="bg-dark border-dim max-h-4xl w-full rounded-lg border shadow-xl">
   <div
     class="bg-surface border-dim sticky flex w-full items-center gap-2 rounded-t-lg px-4 py-3"
   >
     <div class="flex space-x-2">
-      <div class="h-3 w-3 rounded-full bg-red-500"></div>
-      <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
-      <div class="h-3 w-3 rounded-full bg-green-500"></div>
+      <div class="bg-red h-3 w-3 rounded-full"></div>
+      <div class="bg-yellow h-3 w-3 rounded-full"></div>
+      <div class="bg-green h-3 w-3 rounded-full"></div>
     </div>
     <div class="text-grey ml-4 flex-1 text-center text-sm">haris@dev:~</div>
   </div>
 
-  <div class="space-y-3 p-6 font-mono text-sm">
-    <Canvas client:load />
+  <div class="overflow-x-auto font-mono text-sm">
+    <pre
+      class="max-w-full py-2 pl-6 break-words whitespace-pre-wrap">
+    {
+      code.map((token) => {
+        let htmlSpan = undefined
+        if (!Array.isArray(token)) {
+          let className = syntaxHighlighting(token)
+          htmlSpan = <span class={className}>{token.text}</span>
+        } else {
+          htmlSpan = token.map((t) => {
+            let cn = syntaxHighlighting(t)
+            return <span class={cn}>{t.text}</span>
+          })
+        }
+
+        return (
+            <code>{htmlSpan}</code>
+        )
+      })
+    }
+    </pre>
+    <!-- <Canvas client:load /> -->
   </div>
 </div>
