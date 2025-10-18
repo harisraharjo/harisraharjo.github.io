@@ -21,3 +21,14 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Vim swap files
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+# Vim backup files
+*~
+Session.vim
+.netrwhist
