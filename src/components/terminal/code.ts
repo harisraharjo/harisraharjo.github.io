@@ -190,7 +190,7 @@ export const code: (Token | Token[])[] = [
     { text: "	println!", ty: "macro" },
     { text: "(", ty: "operator" },
     { text: '"{:?}"', ty: "string" },
-    { text: ", engineer);", ty: "operator" },
+    { text: ", profile);", ty: "operator" },
   ],
   { text: "}", ty: "operator" },
   { text: "", ty: "blank" },
